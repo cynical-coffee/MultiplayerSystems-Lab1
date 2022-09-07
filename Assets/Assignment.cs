@@ -4,6 +4,10 @@ This RPG data streaming assignment was created by Fernando Restituto.
 Pixel RPG characters created by Sean Browning.
 */
 
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,7 +71,6 @@ public partial class PartyCharacter
 
 #endregion
 
-
 #region Assignment Part 1
 
 static public class AssignmentPart1
@@ -75,11 +78,19 @@ static public class AssignmentPart1
 
     static public void SavePartyButtonPressed()
     {
-        foreach (PartyCharacter pc in GameContent.partyCharacters)
+        using (System.IO.TextWriter textWriter = new StreamWriter("Savefile.txt"))
         {
-            Debug.Log("PC class id == " + pc.classID);
+            foreach (PartyCharacter pc in GameContent.partyCharacters)
+            {
+                //Debug.Log("PC class id == " + pc.classID);
+                textWriter.WriteLine("PlayerClassID = " + pc.classID);
+                textWriter.WriteLine("Health = " + pc.health); 
+                textWriter.WriteLine("Mana = " + pc.mana);
+                textWriter.WriteLine("");
+            }
         }
-    }
+        
+    } 
 
     static public void LoadPartyButtonPressed()
     {

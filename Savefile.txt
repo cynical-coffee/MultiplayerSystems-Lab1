@@ -1,0 +1,12 @@
+PlayerClassID = 3
+Health = 33
+Mana = 109
+
+PlayerClassID = 3
+Health = 35
+Mana = 82
+
+PlayerClassID = 3
+Health = 44
+Mana = 124
+
